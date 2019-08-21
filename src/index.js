@@ -47,18 +47,20 @@ const migrations = migrationDefinitions => createStore => (
     migrationDefinitions
   );
 
-  let migratedState = {
-    ...preloadedState,
-    _migrations: previousMigrations
-  };
+  let executedMigrations = [...previousMigrations];
+
+  let migratedState = preloadedState ? { ...preloadedState } : {};
+  delete migratedState._migrations;
+
   remainingMigrations.forEach(migration => {
-    migratedState = {
-      ...migration.migrate(migratedState),
-      _migrations: [...migratedState._migrations, migration.id]
-    };
+    migratedState = migration.migrate(migratedState);
+    executedMigrations.push(migration.id);
   });
 
-  return createStore(addMigrationsToReducer(reducer), migratedState);
+  return createStore(addMigrationsToReducer(reducer), {
+    ...migratedState,
+    _migrations: executedMigrations
+  });
 };
 
 module.exports = { migrations };

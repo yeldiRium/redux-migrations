@@ -51,7 +51,17 @@ describe("createStore", () => {
         createStore(exampleReducer, migrations([{ id: "123", migrate: {} }]))
       ).toThrow("Expected migrate function of migration 0 to be a function.");
     });
+
+    it("throws an error if the preloaded state is not a plain object", () => {
+      const preloadedState = "uiae";
+      expect(() =>
+        createStore(exampleReducer, preloadedState, migrations([]))
+      ).toThrow(
+        "Expected state to be a plain object. Migrations only work with plain object stores."
+      );
+    });
   });
+
   describe("definition mismatch", () => {
     it(`throws an error if the given migrations don't match the previously executed migrations`, () => {
       const preloadedState = {
@@ -170,10 +180,8 @@ describe("createStore", () => {
         }
       ];
 
-      const reducer = (state = {}, action) => state;
-
       const store = createStore(
-        reducer,
+        exampleReducer,
         preloadedState,
         migrations(migrationDefinitons)
       );
@@ -196,7 +204,7 @@ describe("createStore", () => {
       ];
 
       const storeTwo = createStore(
-        reducer,
+        exampleReducer,
         resultingState,
         migrations(migrationDefinitionsRoundTwo)
       );
@@ -207,6 +215,34 @@ describe("createStore", () => {
         _migrations: ["123", "124", "125"],
         blib: 12345
       });
+    });
+
+    it("do not see the list of previous migrations", () => {
+      const preloadedState = {
+        _migrations: ["1"],
+        someState: "someState"
+      };
+
+      const migrationDefinitions = [
+        {
+          id: "1",
+          migrate: state => state
+        },
+        {
+          id: "2",
+          migrate: jest.fn(state => state)
+        }
+      ];
+
+      createStore(
+        exampleReducer,
+        preloadedState,
+        migrations(migrationDefinitions)
+      );
+
+      expect(
+        migrationDefinitions[1].migrate.mock.calls[0][0]
+      ).not.toHaveProperty("_migrations");
     });
   });
 });

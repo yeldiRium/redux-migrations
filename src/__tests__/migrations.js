@@ -179,16 +179,16 @@ describe("migrationsInState", () => {
 
   it("throws an error if given some kind of bullshit", () => {
     expect(() => migrationsInState(5)).toThrow(
-      "Expected state to be of type object."
+      "Expected state to be a plain object. Migrations only work with plain object stores."
     );
     expect(() => migrationsInState(false)).toThrow(
-      "Expected state to be of type object."
+      "Expected state to be a plain object. Migrations only work with plain object stores."
     );
     expect(() => migrationsInState(null)).toThrow(
-      "Expected state to be of type object."
+      "Expected state to be a plain object. Migrations only work with plain object stores."
     );
     expect(() => migrationsInState(NaN)).toThrow(
-      "Expected state to be of type object."
+      "Expected state to be a plain object. Migrations only work with plain object stores."
     );
   });
 });

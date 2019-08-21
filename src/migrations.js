@@ -6,8 +6,10 @@ const migrationsInState = state => {
   if (state === undefined) {
     return [];
   }
-  if (typeof state !== "object" || state === null) {
-    throw new Error("Expected state to be of type object.");
+  if (!isPlainObject(state)) {
+    throw new Error(
+      "Expected state to be a plain object. Migrations only work with plain object stores."
+    );
   }
   if (state._migrations === undefined) {
     return [];
