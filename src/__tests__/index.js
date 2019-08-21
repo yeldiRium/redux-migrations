@@ -127,7 +127,7 @@ describe("createStore", () => {
 
   describe("migrations", () => {
     it("transforms the preloadedState according to the given migrate function and attaches the migration's id to the store", () => {
-      const preloadedState = "thisIsGonnaBeReplaced";
+      const preloadedState = { uiae: "thisIsGonnaBeReplaced" };
       const migrationDefinitions = [
         {
           id: "123",
