@@ -1,6 +1,4 @@
-const isPlainObject = require("is-plain-object");
-
-const { zip } = require("./util");
+const { isPlainObject, zip } = require("./util");
 
 const migrationsInState = state => {
   if (state === undefined) {

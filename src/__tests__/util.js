@@ -1,4 +1,28 @@
-const { zip } = require("../util");
+const { isPlainObject, zip } = require("../util");
+
+describe("isPlainObject", () => {
+  it("returns true for plain objects", () => {
+    expect(isPlainObject({})).toBe(true);
+    expect(isPlainObject({ blub: "blub" })).toBe(true);
+    expect(isPlainObject({ blub: ["blub"] })).toBe(true);
+    expect(isPlainObject({ blub: { blab: "blib" }, lel: "lol" })).toBe(true);
+  });
+  it("returns false for non-object types", () => {
+    expect(isPlainObject(undefined)).toBe(false);
+    expect(isPlainObject(5)).toBe(false);
+    expect(isPlainObject("uiae")).toBe(false);
+    expect(isPlainObject(NaN)).toBe(false);
+    expect(isPlainObject(true)).toBe(false);
+    expect(isPlainObject(false)).toBe(false);
+    expect(isPlainObject(null)).toBe(false);
+    expect(isPlainObject(() => {})).toBe(false);
+  });
+  it("returns false for non-plain objects", () => {
+    expect(isPlainObject([])).toBe(false);
+
+    expect(isPlainObject(new (class {})())).toBe(false);
+  });
+});
 
 describe("zip", () => {
   it("returns a generator", () => {
