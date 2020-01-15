@@ -3,6 +3,12 @@
 A utility for creating redux stores and migrating existing data to the new
 store's structure.
 
+```sh
+npm install @yeldirium/redux-migrations
+# or
+yarn install @yeldirium/redux-migrations
+```
+
 ## Status
 
 | Category         | Status                                                                                                                        |
