@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/yeldiRium/redux-migrations/compare/v1.2.2...v1.2.3) (2020-01-15)
+
+
+### Bug Fixes
+
+* Get readme up to date. ([59ad92f](https://github.com/yeldiRium/redux-migrations/commit/59ad92f95fc5ce137f2877900e62a625e6b39624))
+
 ## [1.2.2](https://github.com/yeldiRium/redux-migrations/compare/v1.2.1...v1.2.2) (2020-01-15)
 
 
