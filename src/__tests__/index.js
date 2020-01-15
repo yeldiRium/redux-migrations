@@ -1,9 +1,9 @@
-const { createStore, combineReducers } = require("redux");
+const { createStore } = require("redux");
 
 const { migrations } = require("../");
 
 describe("createStore", () => {
-  const exampleReducer = (state = {}, action) => state;
+  const exampleReducer = (state = {}) => state;
 
   it("adds _migration field to the store", () => {
     const preloadedState = { blub: "blub" };
@@ -31,7 +31,7 @@ describe("createStore", () => {
 
   describe("broken parameters/setup", () => {
     it("throws an error if the reducer initializes to something other than an object", () => {
-      const reducer = (state = [], action) => [];
+      const reducer = () => [];
       expect(() => createStore(reducer, migrations([]))).toThrow(
         "Expected reducer to return a plain object. Migrations only work with plain object stores."
       );
@@ -70,7 +70,7 @@ describe("createStore", () => {
       const migrationDefinitions = [
         {
           id: "123",
-          migrate: state => ({
+          migrate: () => ({
             blub: "blub"
           })
         }
@@ -111,13 +111,13 @@ describe("createStore", () => {
       const migrationDefinitions = [
         {
           id: "321",
-          migrate: state => ({
+          migrate: () => ({
             blub: "blub"
           })
         },
         {
           id: "123",
-          migrate: state => ({
+          migrate: () => ({
             blub: "blub"
           })
         }
@@ -141,7 +141,7 @@ describe("createStore", () => {
       const migrationDefinitions = [
         {
           id: "123",
-          migrate: state => ({
+          migrate: () => ({
             blub: "blub"
           })
         }
@@ -197,7 +197,7 @@ describe("createStore", () => {
         ...migrationDefinitons,
         {
           id: "125",
-          migrate: state => ({
+          migrate: () => ({
             blib: 12345
           })
         }

@@ -28,7 +28,7 @@ describe("addMigrationsToReducer", () => {
   });
 
   it("passes state and action to the reducer as-is", () => {
-    const reducer = jest.fn((state = {}, action) => state);
+    const reducer = jest.fn((state = {}) => state);
     const action = { type: "NOOP" };
     const transformedReducer = addMigrationsToReducer(reducer);
 
@@ -38,7 +38,7 @@ describe("addMigrationsToReducer", () => {
   });
 
   it("attaches migrations to the state resulting from the reducer", () => {
-    const reducer = (state = {}, action) => state;
+    const reducer = (state = {}) => state;
     const transformedReducer = addMigrationsToReducer(reducer);
 
     expect(transformedReducer(undefined, { type: "NOOP" })).toEqual({
@@ -47,7 +47,7 @@ describe("addMigrationsToReducer", () => {
   });
 
   it("overwrites any changes the reducer makes to the migrations", () => {
-    const reducer = (state, action) => ({
+    const reducer = () => ({
       _migrations: "lololo"
     });
     const transformedReducer = addMigrationsToReducer(reducer);
