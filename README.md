@@ -1,10 +1,17 @@
 # Redux Migrations
 
-[![Build Status](https://travis-ci.org/yeldiRium/redux-migrations.svg?branch=master)](https://travis-ci.org/yeldiRium/redux-migrations)
-[![npm version](http://img.shields.io/npm/v/@yeldirium/redux-migrations.svg?style=flat)](https://npmjs.org/package/@yeldirium/redux-migrations "View this project on npm")
-
 A utility for creating redux stores and migrating existing data to the new
 store's structure.
+
+## Status
+
+| Category         | Status                                                                                                                        |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Version          | [![npm](https://img.shields.io/npm/v/@yeldirium/redux-migrations)](https://www.npmjs.com/package/@yeldirium/redux-migrations) |
+| Dependencies     | ![David](https://img.shields.io/david/yeldirium/redux-migrations)                                                             |
+| Dev dependencies | ![David](https://img.shields.io/david/dev/yeldirium/redux-migrations)                                                         |
+| Build            | ![GitHub Actions](https://github.com/yeldiRium/redux-migrations/workflows/Release/badge.svg?branch=master)                    |
+| License          | ![GitHub](https://img.shields.io/github/license/yeldiRium/redux-migrations)                                                   |
 
 ## Why?
 
