@@ -42,6 +42,10 @@ describe("zip", () => {
     const listB = [1, 2, 3];
     const result = Array.from(zip(listA, listB));
 
-    expect(result).toEqual([["a", 1, 0], ["b", 2, 1], [undefined, 3, 2]]);
+    expect(result).toEqual([
+      ["a", 1, 0],
+      ["b", 2, 1],
+      [undefined, 3, 2]
+    ]);
   });
 });
