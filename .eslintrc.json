@@ -13,10 +13,5 @@
   "env": {
     "node": true,
     "es2017": true
-  },
-  "rules": {
-    "no-unused-vars": ["error", {
-      "ignoreRestSiblings": true
-    }]
   }
 }
