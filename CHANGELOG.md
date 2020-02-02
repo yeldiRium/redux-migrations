@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/yeldiRium/redux-migrations/compare/v1.2.4...v1.2.5) (2020-02-02)
+
+
+### Bug Fixes
+
+* Reformat according to prettier rules. ([eeac47e](https://github.com/yeldiRium/redux-migrations/commit/eeac47e6709a3b2d53eb22366963e15c8514a359))
+
 ## [1.2.4](https://github.com/yeldiRium/redux-migrations/compare/v1.2.3...v1.2.4) (2020-01-15)
 
 
