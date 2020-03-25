@@ -1,7 +1,7 @@
 const {
   addMigrationsToReducer,
   compareMigrationDefinitionsWithPreviousMigrations,
-  migrationsInState
+  migrationsInState,
 } = require("../migrations");
 
 describe("addMigrationsToReducer", () => {
@@ -42,17 +42,17 @@ describe("addMigrationsToReducer", () => {
     const transformedReducer = addMigrationsToReducer(reducer);
 
     expect(transformedReducer(undefined, { type: "NOOP" })).toEqual({
-      _migrations: []
+      _migrations: [],
     });
   });
 
   it("overwrites any changes the reducer makes to the migrations", () => {
     const reducer = () => ({
-      _migrations: "lololo"
+      _migrations: "lololo",
     });
     const transformedReducer = addMigrationsToReducer(reducer);
     const initialState = {
-      _migrations: ["sensibleMigrationId"]
+      _migrations: ["sensibleMigrationId"],
     };
 
     expect(transformedReducer(initialState, { type: "NOOP" })).toEqual(
@@ -79,8 +79,8 @@ describe("compareMigrationDefinitionsWithPreviousMigrations", () => {
     const migrationDefinitions = [
       {
         id: "uiae",
-        migrate: state => state
-      }
+        migrate: (state) => state,
+      },
     ];
 
     expect(
@@ -96,20 +96,20 @@ describe("compareMigrationDefinitionsWithPreviousMigrations", () => {
     const migrationDefinitions = [
       {
         id: "1",
-        migrate: state => state
+        migrate: (state) => state,
       },
       {
         id: "2",
-        migrate: state => state
+        migrate: (state) => state,
       },
       {
         id: "3",
-        migrate: state => state
+        migrate: (state) => state,
       },
       {
         id: "3",
-        migrate: state => state
-      }
+        migrate: (state) => state,
+      },
     ];
 
     expect(
@@ -125,12 +125,12 @@ describe("compareMigrationDefinitionsWithPreviousMigrations", () => {
     const migrationDefinitions = [
       {
         id: "2",
-        migrate: state => state
+        migrate: (state) => state,
       },
       {
         id: "1",
-        migrate: state => state
-      }
+        migrate: (state) => state,
+      },
     ];
 
     expect(() =>
@@ -148,8 +148,8 @@ describe("compareMigrationDefinitionsWithPreviousMigrations", () => {
     const migrationDefinitions = [
       {
         id: "1",
-        migrate: state => state
-      }
+        migrate: (state) => state,
+      },
     ];
 
     expect(() =>

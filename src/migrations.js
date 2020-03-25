@@ -1,6 +1,6 @@
 const { isPlainObject, zip } = require("./util");
 
-const migrationsInState = state => {
+const migrationsInState = (state) => {
   if (state === undefined) {
     return [];
   }
@@ -58,7 +58,7 @@ const compareMigrationDefinitionsWithPreviousMigrations = (
  *
  * @param {Function} reducer
  */
-const addMigrationsToReducer = reducer => {
+const addMigrationsToReducer = (reducer) => {
   if (typeof reducer !== "function") {
     throw new Error("Expected reducer to be a function.");
   }
@@ -72,7 +72,7 @@ const addMigrationsToReducer = reducer => {
     }
     return {
       ...newState,
-      _migrations
+      _migrations,
     };
   };
 };
@@ -80,5 +80,5 @@ const addMigrationsToReducer = reducer => {
 module.exports = {
   addMigrationsToReducer,
   compareMigrationDefinitionsWithPreviousMigrations,
-  migrationsInState
+  migrationsInState,
 };

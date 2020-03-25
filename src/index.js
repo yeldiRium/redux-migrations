@@ -1,7 +1,7 @@
 const {
   addMigrationsToReducer,
   compareMigrationDefinitionsWithPreviousMigrations,
-  migrationsInState
+  migrationsInState,
 } = require("./migrations");
 
 /**
@@ -14,7 +14,7 @@ const {
  *
  * @returns {Store}
  */
-const migrations = migrationDefinitions => createStore => (
+const migrations = (migrationDefinitions) => (createStore) => (
   reducer,
   preloadedState
 ) => {
@@ -52,14 +52,14 @@ const migrations = migrationDefinitions => createStore => (
   let migratedState = preloadedState ? { ...preloadedState } : {};
   delete migratedState._migrations;
 
-  remainingMigrations.forEach(migration => {
+  remainingMigrations.forEach((migration) => {
     migratedState = migration.migrate(migratedState);
     executedMigrations.push(migration.id);
   });
 
   return createStore(addMigrationsToReducer(reducer), {
     ...migratedState,
-    _migrations: executedMigrations
+    _migrations: executedMigrations,
   });
 };
 

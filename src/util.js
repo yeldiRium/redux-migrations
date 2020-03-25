@@ -1,4 +1,4 @@
-const isPlainObject = obj => {
+const isPlainObject = (obj) => {
   if (typeof obj !== "object" || obj === null) return false;
 
   let proto = obj;
@@ -9,7 +9,7 @@ const isPlainObject = obj => {
   return Object.getPrototypeOf(obj) === proto;
 };
 
-const zip = function*(listA, listB) {
+const zip = function* (listA, listB) {
   let index = 0;
   while (index < listA.length || index < listB.length) {
     yield [listA[index], listB[index], index];
@@ -19,5 +19,5 @@ const zip = function*(listA, listB) {
 
 module.exports = {
   isPlainObject,
-  zip
+  zip,
 };
