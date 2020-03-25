@@ -45,7 +45,7 @@ describe("zip", () => {
     expect(result).toEqual([
       ["a", 1, 0],
       ["b", 2, 1],
-      [undefined, 3, 2]
+      [undefined, 3, 2],
     ]);
   });
 });

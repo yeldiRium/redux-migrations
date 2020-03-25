@@ -18,14 +18,14 @@ describe("createStore", () => {
     expect(customStore.getState()).toMatchObject(reduxStore.getState());
     expect(customStore.getState()).toEqual({
       _migrations: [],
-      blub: "blub"
+      blub: "blub",
     });
   });
 
   it("accepts no migration parameter as if an empty list was given", () => {
     const store = createStore(exampleReducer, migrations());
     expect(store.getState()).toEqual({
-      _migrations: []
+      _migrations: [],
     });
   });
 
@@ -65,15 +65,15 @@ describe("createStore", () => {
   describe("definition mismatch", () => {
     it(`throws an error if the given migrations don't match the previously executed migrations`, () => {
       const preloadedState = {
-        _migrations: ["321"]
+        _migrations: ["321"],
       };
       const migrationDefinitions = [
         {
           id: "123",
           migrate: () => ({
-            blub: "blub"
-          })
-        }
+            blub: "blub",
+          }),
+        },
       ];
 
       expect(() =>
@@ -89,7 +89,7 @@ describe("createStore", () => {
 
     it("throws an error if there are less migration definitions than previously executed migrations", () => {
       const preloadedState = {
-        _migrations: ["321"]
+        _migrations: ["321"],
       };
       const migrationDefinitions = [];
 
@@ -106,21 +106,21 @@ describe("createStore", () => {
 
     it(`throws an error if the order of the given migrations doesn't match the previously executed migrations`, () => {
       const preloadedState = {
-        _migrations: ["123", "321"]
+        _migrations: ["123", "321"],
       };
       const migrationDefinitions = [
         {
           id: "321",
           migrate: () => ({
-            blub: "blub"
-          })
+            blub: "blub",
+          }),
         },
         {
           id: "123",
           migrate: () => ({
-            blub: "blub"
-          })
-        }
+            blub: "blub",
+          }),
+        },
       ];
 
       expect(() =>
@@ -142,9 +142,9 @@ describe("createStore", () => {
         {
           id: "123",
           migrate: () => ({
-            blub: "blub"
-          })
-        }
+            blub: "blub",
+          }),
+        },
       ];
 
       const store = createStore(
@@ -155,29 +155,29 @@ describe("createStore", () => {
 
       expect(store.getState()).toEqual({
         _migrations: ["123"],
-        blub: "blub"
+        blub: "blub",
       });
     });
 
     it("applies multiple migrations correctly", () => {
       const preloadedState = {
-        blub: "blub"
+        blub: "blub",
       };
       const migrationDefinitons = [
         {
           id: "123",
-          migrate: state => ({
+          migrate: (state) => ({
             ...state,
-            blab: "blab"
-          })
+            blab: "blab",
+          }),
         },
         {
           id: "124",
-          migrate: state => ({
+          migrate: (state) => ({
             ...state,
-            blub: [1, 2, 3]
-          })
-        }
+            blub: [1, 2, 3],
+          }),
+        },
       ];
 
       const store = createStore(
@@ -190,7 +190,7 @@ describe("createStore", () => {
       expect(resultingState).toEqual({
         _migrations: ["123", "124"],
         blab: "blab",
-        blub: [1, 2, 3]
+        blub: [1, 2, 3],
       });
 
       const migrationDefinitionsRoundTwo = [
@@ -198,9 +198,9 @@ describe("createStore", () => {
         {
           id: "125",
           migrate: () => ({
-            blib: 12345
-          })
-        }
+            blib: 12345,
+          }),
+        },
       ];
 
       const storeTwo = createStore(
@@ -213,25 +213,25 @@ describe("createStore", () => {
 
       expect(resultingStateTwo).toEqual({
         _migrations: ["123", "124", "125"],
-        blib: 12345
+        blib: 12345,
       });
     });
 
     it("do not see the list of previous migrations", () => {
       const preloadedState = {
         _migrations: ["1"],
-        someState: "someState"
+        someState: "someState",
       };
 
       const migrationDefinitions = [
         {
           id: "1",
-          migrate: state => state
+          migrate: (state) => state,
         },
         {
           id: "2",
-          migrate: jest.fn(state => state)
-        }
+          migrate: jest.fn((state) => state),
+        },
       ];
 
       createStore(
