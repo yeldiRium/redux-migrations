@@ -36,6 +36,6 @@
     "jest": "26.0.1",
     "prettier": "2.0.5",
     "redux": "4.0.5",
-    "semantic-release": "17.0.8"
+    "semantic-release": "17.1.0"
   }
 }
