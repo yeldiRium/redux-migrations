@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/yeldiRium/redux-migrations/compare/v1.2.5...v1.2.6) (2021-10-08)
+
+
+### Bug Fixes
+
+* Deprecate package. ([c7ea29d](https://github.com/yeldiRium/redux-migrations/commit/c7ea29d5568780c785ad8ac64b10b17dde4afc6c))
+
 ## [1.2.5](https://github.com/yeldiRium/redux-migrations/compare/v1.2.4...v1.2.5) (2020-02-02)
 
 

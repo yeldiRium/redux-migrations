@@ -1,6 +1,6 @@
 {
   "name": "@yeldirium/redux-migrations",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "A redux enhancer supporting migrations for persisted state.",
   "keywords": [
     "redux",
